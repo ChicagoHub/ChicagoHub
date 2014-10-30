@@ -2,7 +2,6 @@ ChicagoHub
 ==========
 
 Repository for ChicagoHub Project
-
  
 Chicago Hub gives you an easy way to find restaurants in Chicago and its neighborhoods.
 
