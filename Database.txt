@@ -1,0 +1,29 @@
+Show databases;
+
+Create database ChicagoHub;
+
+Show databases;
+
+use ChicagoHub;
+
+ show tables;
+
+create table Details(Sno  int  auto_increment PRIMARY KEY, 
+Neighborhood varchar(35), 
+Restaurant_Name varchar(30), 
+Address varchar(50), 
+Typ_of_Rest varchar(20), 
+Cuisine varchar(20),	
+Price varchar (20), 
+Rating varchar (20), 
+Phone varchar (20), 
+Link varchar (50) );
+
+ desc Details;
+
+
+
+
+
+
+

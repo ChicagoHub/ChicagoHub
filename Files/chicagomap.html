@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Chicago</title>
+</head>
+<meta charset="utf-8">
+ 
+<!-- setting color for bounderies between neighbours -->
+  <style>
+  path {
+    stroke: white;
+    stroke-width: 1.5px;
+    fill: #FF3366;
+  }
+  
+  #collection .active {
+  fill: orange;
+}
+  </style>
+<body>
+ 
+  <!-- implementation of the hosted D3- and TopoJson js-libraries -->
+  <script src="http://d3js.org/d3.v3.min.js"></script>
+  <script src="http://d3js.org/topojson.v1.min.js"></script>
+<script>
+
+<!-- importing json file to build the map --!>
+d3.json("cdata.json", function(error, chicago) {
+  if (error) {
+    return console.error(error);
+  } else {
+    console.log(chicago);
+  }
+
+ var width = 700;
+ var height = 868;
+ var centered;
+ 
+ <!-- appending the body to the svg element and setting the height and width of the map --!>
+
+var svg = d3.select("body")
+            .append("svg")
+            .attr("width", width)
+            .attr("height", height);
+			
+
+
+var chicago = topojson.feature(chicago, chicago.objects.collection);
+    console.log(chicago);
+
+<!-- projecting the map --!>
+
+  var projection = d3.geo.albers()
+    .rotate([87.73, 0])
+    .center([0, 42.0433])
+    .scale(120000)
+    .translate([width / 2, 0]);
+
+ var path = d3.geo.path().projection(projection);
+ 
+ var zoom = d3.behavior.zoom()
+    .translate(projection.translate())
+    .scale(projection.scale())
+    .scaleExtent([height, 8 * height])
+    .on("zoom", zoomed);
+ 
+  svg.append("path")
+       .datum(chicago)
+       .attr("d", path)
+	     .on("click", clicked)
+		 .call(zoom)
+		  
+		  
+		  <!-- each neighborhood is now given a boundary --!>
+   svg.selectAll(".collection")
+       .data(chicago.features)
+       .enter()
+       .append('path')  
+       .attr('class', function(d) {
+         return 'collection' + d.id;
+       })
+       .attr('d', path)
+	   .on("click", clicked)
+
+       // Add in random colors to see state borders.
+       .style("fill", function() {
+                return "hsl(" + Math.random() * 360 + ",100%,50%)"
+				
+       }); 
+
+/* svg.append("path")
+    .datum(chicago)
+    .attr("d", path)
+    .attr("class", "place"); */
+	   
+	   <!-- this code fetches neighborhoods names and attaches lables to all --!>
+	  svg.selectAll(".collection-label")
+    .data(chicago.features)
+  .enter().append("text")
+    .attr("class", function(d) { return "collection-label " + d.id; })
+    .attr("transform", function(d) { return "translate(" + path.centroid(d) + ")"; })
+    .attr("dy", ".35em")
+	.attr("text-anchor", "middle")
+	.attr("font-size", "10px")
+    .text(function(d) { return d.properties.name; });
+	
+	// function that zooms a neighbourhood on click
+function clicked(d) {
+			
+		  var x, y, k;
+
+  if (d && centered !== d) {
+    var centroid = path.centroid(d);
+    x = centroid[0];
+    y = centroid[1];
+    k = 4;
+    centered = d;
+	/*Implement php here*/
+	/* Sending the selected neighborhood name, current location to php*/
+
+      top.frames['frame3'].location.href = "searchList.php?Neighbourhood="+ d.properties.name; 
+  } else {
+    x = width / 2;
+    y = height / 2;
+    k = 1;
+    centered = null;
+	/*Implement php here*/
+	/* Sending the selected neighborhood name to php*/
+
+     top.frames['frame3'].location.href = "searchList.php?Neighbourhood="+ d.properties.name + "&Clat"+ Geo.lat +"&Clong" +Geo.long; 
+  }
+  
+  svg.selectAll("path")
+      .classed("active", centered && function(d) { return d === centered; });
+
+  svg.transition()
+      .duration(750)
+      .attr("transform", "translate(" + width / 2 + "," + height / 2 + ")scale(" + k + ")translate(" + -x + "," + -y + ")")
+      .style("stroke-width", 1.5 / k + "px");
+	}
+ 
+ function zoomed() {
+  projection.translate(d3.event.translate).scale(d3.event.scale);
+  /*svg.selectAll("path").attr("d", path); */
+}
+
+var lat;
+var long;
+var Geo={};
+
+//getting current location using HTML5 Geolocation API.
+function getLocation() {
+    if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(showPosition);
+    } else { 
+        x.innerHTML = "Geolocation is not supported by this browser.";
+    }
+}
+function showPosition(position) {
+    Geo.lat = position.coords.latitude;
+     Geo.long = position.coords.longitude;	
+     onPositionReady(); }
+
+getLocation();
+
+// When the co-ordinates are determined projecting a circle on the map dynamically using current location.
+function onPositionReady() {
+		
+svg.append("circle").attr("r",5).attr("transform", function() {return "translate(" + projection([Geo.long,Geo.lat]) + ")";}).style("fill", "black").each(pulse);
+
+}
+
+//function to add animation to that circle.
+function pulse() {
+			var circle = svg.select("circle");
+			(function repeat() {
+				circle = circle.transition()
+					.duration(900)
+					.attr("stroke-width", 4)
+					.attr("r", 7)
+					.transition()
+					.duration(900)
+					.attr('stroke-width', 0.5)
+					.attr("r", 11)
+					.ease('sine')
+					.each("end", repeat);
+			})();
+		}
+
+      
+});
+
+
+</script>
+</body>
+</html>

@@ -1,0 +1,189 @@
+<html>
+  <head>
+    <meta content="text/html; charset=windows-1252" http-equiv="content-type">
+    <link rel="alternate stylesheet" type="text/css" href="resource://gre-resources/plaintext.css"
+
+      title="Wrap Long Lines">
+  </head>
+  <body>
+    <pre>
+	/*
+Design by Free CSS Templates
+http://www.freecsstemplates.org
+Released for free under a Creative Commons Attribution 2.5 License
+*/
+
+#star {
+	margin: 2;
+	padding: 2;
+	
+	
+}
+
+body {
+	margin: 0px;
+	margin-left:170px;
+	margin-right:170px;
+	background-image: url(images/sss.jpg);
+	background-repeat:repeat-y repeat-x; 
+	text-align: justify;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 13px;
+	color: #231F20;
+}
+
+h1, h2, h3 {
+}
+
+h1 {
+}
+
+h2 {
+}
+
+h3 {
+}
+
+
+a {
+	text-decoration: underline;
+	color: #7EBA25;
+}
+
+a:hover {
+	text-decoration: none;
+	color: #7EBA25;
+}
+
+/* Wrapper */
+
+#wrapper {
+	background-color:#ffffff;
+	height:690px;
+}
+
+/* Header */
+
+#header {
+	width: 880px;
+	height: 105px;
+	margin: 0;
+	
+
+}
+
+/* Logo */
+
+#logo {
+	margin-left:0px;
+	
+}
+
+
+#logo h1 a {
+	color: #FFFFFF;
+}
+
+#logo h2 {
+	margin: -2px 0 0 0;
+	padding: 0;
+	text-transform: uppercase;
+	letter-spacing: 2px;
+	font-size: 11px;
+    font-color:  
+    font-weight: bold;
+	color: #07902C;
+	font-family: Baskerville, "Palatino Linotype", Palatino, "Century Schoolbook L", "Times New Roman", serif;
+}
+
+#logo a {
+	text-decoration: none;
+	color: #FFFFFF;
+}
+
+/* Menu */
+
+#menu {
+	width: 1011px;
+	height: 40px;
+	margin-left:0px;
+	background-color:#E84319;
+	
+	
+}
+
+#menu ul {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+	line-height: normal;
+	margin-left: 227px;
+}
+
+#menu li {
+	display: inline;
+	text-align: center;
+}
+
+#menu a {
+	display: block;
+	float: left;
+	height: 24px;
+	margin-right: 3.5px;
+	padding: 10px 20px 0px 20px;
+	text-decoration: none;
+	text-align: center;
+	text-transform: uppercase;
+	font-size: 16px;
+	font-weight: bold;
+	color:#000000;
+}
+
+#menu a:hover {
+	background: #32CD32;
+	color: #FFFFFF;
+                      height:30px;
+}
+
+/*#splash {
+	width: 940px;
+	height: 255px;
+	margin: 0 auto;
+}
+
+/* Search */
+table, td, tr{
+	border: 0px solid black;
+}
+
+h2 {
+    font-family: "Times New Roman";
+    color: #F00000;
+	text-align:"centre";
+       
+}
+section {
+        font-style:"Times New Roman" ;
+        font-size: 20px;
+		text-align: "center";
+		
+      }
+  
+    .center {
+    margin-left: auto;
+    margin-right: auto;
+    width: 70%;
+    text-align: "center";
+    
+}
+p{
+font-style:"Times New Roman" ;
+        font-size: 18px;
+		text-align: "center";
+
+}
+
+
+</pre>
+  </body>
+</html>

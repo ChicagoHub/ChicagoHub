@@ -1,0 +1,87 @@
+﻿<!doctype html>
+<html>
+<head>
+<title>ChicagoHub</title>
+<link href="style.css" rel="stylesheet" type="text/css">
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<meta name="keywords" content="" />
+<meta name="description" content="" />
+<link href="default.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="wrapper">
+<div id="header">
+    <div id="logo">
+      <img src="images/img04.png" width="174" height="162" alt="" />
+      <h2 style="color: #000000">Choose the <span style="color: #000000">Best</span> ~ Be your Best</h2>
+    </div>
+    <!-- end div#logo -->
+  </div>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+<body>
+
+<div id="menu">
+ <ul>
+          <a href="index.html">
+            <li>Home</li>
+          </a>
+          <li>&nbsp;&nbsp;</li>
+         <li><a href="search.html" target="_blank" >Find Restaurant</a></li>
+          <li>&nbsp;&nbsp;</li>
+          <li> 
+          </li>
+           <a href="about.html">
+            <li>About</li>
+          </a>
+          <li>&nbsp;&nbsp;</li>
+          <a href="contact.html">
+            <li>Contact</li>
+          </a>
+        </ul>
+</div>
+<p>
+<div id="splash"><img id="img" src="http://1.bp.blogspot.com/-FzUBb1OTKnY/TgePX-eAbbI/AAAAAAAADzY/mX1CWZKvXSw/s1600/StuffedPeppers10.jpg" width="1010" height="340">
+</p></div>
+  
+<script>
+
+function changeImage()
+{
+    var img = document.getElementById("img");
+    img.src = images[x];
+    x++;
+
+    if(x >= images.length){
+        x = 0;
+    } 
+     
+    setTimeout("changeImage()", 2000);
+}
+
+ 
+var images = [],
+x = 0;
+
+images[0] = "images/Food1.jpg";
+images[1] = "images/Food2.jpg";
+images[2] = "images/Food3.jpg";
+images[3] = "images/Food5.jpg";
+images[4] = "images/Food6.jpg";
+images[5] = "images/Food7.jpg";
+images[6] = "images/Food4.jpg";
+setTimeout("changeImage()", 1000);
+
+</script>
+<p style="text-align:center;"> Copyright © 2014 by Chicago Hub</p>
+<br>
+<br>
+    </div>
+  </div>
+</body>
+
+</html>
